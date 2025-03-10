@@ -69,5 +69,6 @@ print("\n Aperçu final des données après suppression des tweets ENGIEpartFR e
 print(df[['screen_name', 'tweet_text', 'hour', 'tweet_length', 'criticite']].head(5))
 
 # Sauvegarde des données nettoyées
+
 df.to_csv(output_file, index=False)
 print(f"\n Données nettoyées et sauvegardées : {output_file}")
