@@ -32,7 +32,8 @@ if df['date'].isnull().sum() > 0:
     df.dropna(subset=['date'], inplace=True)
 
 # Convertir user_id en texte
-df['user_id'] = df['user_id'].astype(str)
+df['user_id'] = df['user_id'].astype(str).str.replace(",","") # retirer les virgules
+
 
 # Suppression des doublons
 df.drop_duplicates(inplace=True)
