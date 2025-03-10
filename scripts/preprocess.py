@@ -1,25 +1,28 @@
 # Script de nettoyage et d'extraction des données
 import pandas as pd
 
-# Définition des chemins de fichiers
+import pandas as pd
+
+#  Définition des chemins de fichiers
 input_file = "../data/filtered_tweets_engie.csv"
 output_file = "../data/cleaned_tweets.csv"
 
 #  Étape 1 : Chargement des données
-print("📥 Chargement des tweets...")
+print(" Chargement des tweets...")
 df = pd.read_csv(input_file, sep=";")
 
 # Affichage propre de l'aperçu des données
 print("\n Aperçu des premières lignes :")
-print(df.head(3))  # juste 3 lignes 
+print(df.head(3))  # jute 3 lignes 
+
 # Vérifier les infos générales du dataset
 print("\n Infos sur le dataset avant nettoyage :")
 df.info()
 
-# 📌 Étape 2 : Nettoyage des données
+#  Étape 2 : Nettoyage des données
 df.rename(columns={'full_text': 'tweet_text', 'created_at': 'date', 'id': 'user_id'}, inplace=True)
 
-# Supprimer les tweets venant de "ENGIEpartFR" et "ENGIEgems" dans screen_name 
+# Supprimer les tweets venant de "ENGIEpartFR" et "ENGIEgems" dans screen_name
 df = df[~df['screen_name'].str.contains("ENGIEpartFR|ENGIEgems", case=False, na=False)]
 
 # Supprimer les lignes avec des valeurs nulles sur des colonnes essentielles
@@ -30,7 +33,7 @@ df['date'] = pd.to_datetime(df['date'], errors='coerce', utc=True)
 
 # Si des dates n'ont pas pu être converties, on les retire
 if df['date'].isnull().sum() > 0:
-    print(f"\nSuppression de {df['date'].isnull().sum()} lignes avec date non valide.")
+    print(f"\n Suppression de {df['date'].isnull().sum()} lignes avec date non valide.")
     df.dropna(subset=['date'], inplace=True)
 
 # Convertir user_id en texte et nettoyer
@@ -58,7 +61,7 @@ def classifier_criticite(tweet):
 
 df['criticite'] = df['tweet_text'].apply(classifier_criticite)
 
-# ✅ Garder les doublons, mais sans les tweets ENGIEpartFR ou ENGIEgems
+#  Garder les doublons, mais sans les tweets ENGIEpartFR ou ENGIEgems
 df = df.sort_values(by='date', ascending=False)  # Juste pour l'organisation visuelle
 
 # 📌 Étape 5 : Vérifications finales et export
@@ -67,4 +70,4 @@ print(df[['screen_name', 'tweet_text', 'hour', 'tweet_length', 'criticite']].hea
 
 # Sauvegarde des données nettoyées
 df.to_csv(output_file, index=False)
-print(f"\n📂 Données nettoyées et sauvegardées : {output_file}")
+print(f"\n Données nettoyées et sauvegardées : {output_file}")
