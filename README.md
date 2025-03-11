@@ -1,4 +1,8 @@
 # 📌 README - Analyse des Tweets Clients d'Engie
+# Lien de la presentation 
+https://prezi.com/view/D55Iibf0gaf5Se238hi6/
+# lien de git hub
+https://github.com/firasbourguiba/Challenge48
 
 ## 📍 **Description du Projet**
 Ce projet vise à analyser les tweets adressés au service client d'Engie afin de :
