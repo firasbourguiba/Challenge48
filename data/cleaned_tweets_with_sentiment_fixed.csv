@@ -1,9 +1,5 @@
 user_id,screen_name,name,date,tweet_text,hour,tweet_length,criticite,sentiment
-1.89684e+23,lescausesjustes,AInnovation,2025-03-04 08:09:58+00:00,"@ENGIEgroup @ENGIEpartFR pour l'amour du ciel, c'est quoi cette gestion de vos clients ? #engie #edf @EDFofficiel",8,113,1,"{
-  ""Inconfort"": 90,
-  ""Sentiment"": ""Négatif"",
-  ""Urgence"": true
-}"
+1.89684e+23,lescausesjustes,AInnovation,2025-03-04 08:09:58+00:00,"@ENGIEgroup @ENGIEpartFR pour l'amour du ciel, c'est quoi cette gestion de vos clients ? #engie #edf @EDFofficiel",8,113,1,Erreur Inconnue
 1.8967e+22,Leoletonneau,Tigre & Dragon 🐯 🐉,2025-03-03 23:25:45+00:00,"@ENGIEpartFR vraiment des escrocs, des montants de consommations qui changent. Des excès de facturations dans tous les sens. À fuir",23,131,1,"{
   ""Inconfort"": 100,
   ""Sentiment"": ""Négatif"",
