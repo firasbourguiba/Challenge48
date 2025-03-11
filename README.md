@@ -1,7 +1,9 @@
 # 📌 README - Analyse des Tweets Clients d'Engie
-# Lien de la presentation 
+
+# Lien de la présentation
 https://prezi.com/view/D55Iibf0gaf5Se238hi6/
-# lien de git hub
+
+# Lien de GitHub
 https://github.com/firasbourguiba/Challenge48
 
 ## 📍 **Description du Projet**
@@ -74,6 +76,22 @@ Ce projet vise à analyser les tweets adressés au service client d'Engie afin d
 - Calcul du nombre de tweets par **sentiment** et **secteur**.
 - Visualisation des **tendances des plaintes** au fil du temps 📈.
 - Création de **graphiques interactifs** avec Power BI ou Streamlit.
+
+### ✅ **6. Création des Agents IA et Automatisation**
+- **Logique utilisée pour détecter les types de réclamations** :
+  - Classification basée sur des mots-clés spécifiques.
+  - Score d’inconfort calculé en fonction du sentiment du tweet.
+  - Catégorisation en **Facturation, Service client, Panne, Urgence, Autre**.
+
+- **Prompts et fine-tuning réalisés** :
+  - Exemple de prompt utilisé pour Mistral/Gemini :
+    ```
+    "Analyse ce tweet et classifie-le en une des catégories suivantes : [Facturation, Service Client, Panne, Urgence]. Donne un score d'inconfort de 0 à 100%."
+    ```
+
+- **Exemples d’interactions générées par l’agent** :
+  - **Tweet :** "Encore un problème de facturation chez @Engie, c’est une honte !"
+  - **Réponse IA :** "Catégorie : Facturation | Sentiment : Négatif | Score d’inconfort : 90%"
 
 ## 📊 **Résultats Obtenus**
 ### 📌 **Classement des tweets par sentiment**
