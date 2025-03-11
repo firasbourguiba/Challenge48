@@ -1,17 +1,28 @@
 import pandas as pd
+import os
 
-# ✅ Charger les tweets annotés
-file_path = r"C:\Users\firas\Documents\ynov\B2\challenge 48h\data\cleaned_tweets_with_sentiment.csv"
-df = pd.read_csv(file_path, dtype={"user_id": str})  # ✅ Charger les IDs comme texte
+# Définition du chemin du fichier
+tweets_file = "../data/cleaned_tweets_with_sentiment.csv"
+output_file = "../data/cleaned_tweets_with_sentiment_corrected.csv"
 
-# ✅ Correction : Convertir l'ID en entier pour éviter la notation scientifique
-df['user_id'] = df['user_id'].apply(lambda x: str(int(float(x))) if 'E' in x else x)
+# Vérifier si le fichier existe avant de continuer
+if not os.path.exists(tweets_file):
+    print(f"❌ Fichier introuvable : {tweets_file}. Vérifie le chemin !")
+    exit()
 
-# ✅ Vérifier la correction (afficher les 5 premiers ID)
-print(df[['user_id']].head())
+print(f"✅ Fichier trouvé : {tweets_file}")
 
-# ✅ Sauvegarder le fichier avec les ID correctement formatés
-output_file = r"C:\Users\firas\Documents\ynov\B2\challenge 48h\data\cleaned_tweets_with_sentiment_fixed.csv"
-df.to_csv(output_file, index=False)
+# Charger le fichier en s'assurant que toutes les colonnes restent des chaînes de caractères
+df = pd.read_csv(tweets_file, dtype=str)
 
-print(f"\n✅ Correction des ID terminée ! Fichier sauvegardé sous : {output_file}")
+# ✅ Correction de la notation scientifique des ID (Conversion brute en chaîne de texte)
+df['user_id'] = df['user_id'].apply(lambda x: str(int(float(x))) if 'e' in x else x)
+
+# Vérification des ID après correction
+print("\n✅ Exemple d'ID après conversion :")
+print(df[['user_id']].head(10))
+
+# Sauvegarde du fichier corrigé en forçant l'ID à rester en texte
+df.to_csv(output_file, index=False, quoting=1, encoding="utf-8")
+
+print(f"\n✅ Correction terminée ! Fichier sauvegardé sous : {output_file}")
